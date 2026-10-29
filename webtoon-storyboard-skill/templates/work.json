@@ -1,0 +1,10 @@
+{
+  "schema": "webtoon-storyboard-skill/work-v1",
+  "work_id": "001",
+  "english_title": "Example Work Title",
+  "source_title": "عنوان العمل",
+  "repository": "ahpa5246-lgtm/The-rustling-of-paper",
+  "chapters": [],
+  "standalone_scenes": [],
+  "next_scene_number_policy": "monotonic-within-container"
+}
