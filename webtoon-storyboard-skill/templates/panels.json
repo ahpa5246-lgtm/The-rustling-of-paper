@@ -1,0 +1,13 @@
+{
+  "schema": "webtoon-storyboard-skill/panels-v1",
+  "panels": [
+    {
+      "id": "P01",
+      "beat": "B01",
+      "part": "storyboard-part-01.png",
+      "top": 0,
+      "bottom": 800,
+      "function": "Establish place and reveal the first clue"
+    }
+  ]
+}
