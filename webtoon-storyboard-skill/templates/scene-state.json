@@ -1,0 +1,22 @@
+{
+  "schema": "webtoon-storyboard-skill/scene-v1",
+  "scene_id": "scene-001",
+  "source_revision": 1,
+  "editorial": {
+    "status": "proposed",
+    "revision": 1,
+    "approved_revision": null
+  },
+  "visual": {
+    "status": "blocked",
+    "revision": 0,
+    "approved_revision": null
+  },
+  "storyboard": {
+    "status": "blocked",
+    "revision": 0,
+    "approved_visual_revision": null
+  },
+  "panel_ids": [],
+  "updated_at": null
+}
