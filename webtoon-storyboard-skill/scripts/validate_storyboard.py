@@ -12,9 +12,18 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
+
 
 def dimensions(path: Path):
     if path.suffix.lower() == ".png":
+        if Image is not None:
+            with Image.open(path) as img:
+                img.load()  # Verify the full raster can be decoded, not only its header.
+                return img.size
         with path.open("rb") as f:
             header = f.read(24)
         if header[:8] != b"\x89PNG\r\n\x1a\n" or header[12:16] != b"IHDR":
@@ -54,7 +63,11 @@ def validate(scene: Path):
         ids = [p["id"] for p in panels]
         if len(ids) != len(set(ids)):
             errors.append("duplicate panel IDs")
-        if state.get("panel_ids") and state["panel_ids"] != ids:
+        if ids != [f"P{i:02d}" for i in range(1, len(ids) + 1)]:
+            errors.append("panel IDs must be sequential P01..Pn")
+        if not state.get("panel_ids"):
+            errors.append("approved scene-state panel roster is missing")
+        elif state["panel_ids"] != ids:
             errors.append("panel IDs/order differ from approved scene-state roster")
         if not ids:
             errors.append("no storyboard panels")
@@ -112,6 +125,8 @@ def main():
         print("FAIL:\n" + "\n".join("- " + x for x in errors))
         return 1
     print("PASS: approvals, ordered roster and all delivered image widths are valid")
+    if Image is None:
+        print("WARNING: Pillow unavailable; PNG headers were checked but full raster decoding was not verified")
     print("Manual check remains required: plot fidelity, continuity, legibility and sketch-only style")
     return 0
 
