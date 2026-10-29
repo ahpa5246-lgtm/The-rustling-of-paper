@@ -1,0 +1,6 @@
+interface:
+  display_name: Webtoon Storyboard Director
+  short_description: Direct scenes into approved sketch storyboards
+  default_prompt: حوّل النص القصصي الذي سأقدمه إلى ستوريبورد وفق المراحل الثلاث. لا تتجاوز موافقات التحرير والإخراج، واحفظ النتائج على GitHub.
+policy:
+  allow_implicit_invocation: true
