@@ -1,7 +1,7 @@
 # GitHub workspace, numbering and persistence
 
 **Repository:** `ahpa5246-lgtm/The-rustling-of-paper`  
-**Independent root:** `webtoon-storyboard-skill/` (sibling of `Webtoon-AI-Academy/`). `SKILL.md`, `references/`, `scripts/` and `README.md` are skill machinery; projects are under `projects/` to avoid mixing user output with skill definitions.
+**Independent root:** `webtoon-storyboard-skill/` (sibling of `Webtoon-AI-Academy/`). `SKILL.md`, `references/`, `scripts/` and `README.md` are skill machinery; numbered work directories are placed directly under `webtoon-storyboard-skill/`; identify them by their `[NNN]` prefixes, distinguishing them from skill support files.
 
 ## Project path contract
 
@@ -34,10 +34,10 @@ webtoon-storyboard-skill/
       chapter-002/...
       standalone/
         scene-001/...
-    [002] Another English Work Title/...
+  [002] Another English Work Title/...
 ```
 
-Git does not store empty directories; create files only when there is real content. The bracketed three-digit project prefix is literal: `[001] English Work Title`. Always assign the first available number greater than the **maximum existing number**; do not reuse deleted numbers. Scan all entries under `projects/` via the connected GitHub API, handle pagination, and recheck immediately before creation to avoid collisions. Do not rename old projects when adding new ones. Project title must be English while the source title may remain Arabic in `work.json`.
+Git does not store empty directories; create files only when there is real content. The bracketed three-digit project prefix is literal: `[001] English Work Title`. Always assign the first available number greater than the **maximum existing number**; do not reuse deleted numbers. Scan all entries under `webtoon-storyboard-skill/` via the connected GitHub API, handle pagination, and recheck immediately before creation to avoid collisions. Do not rename old projects when adding new ones. Project title must be English while the source title may remain Arabic in `work.json`.
 
 If a work title is not supplied, **ask the user**; do not use a chapter title as a surrogate work title. If a work with the same title already exists, inspect metadata and ask which existing work is intended when ambiguous. Chapters from the same confirmed work always go in the same numbered project. Determine chapter ID from provided chapter number if unambiguous, otherwise allocate next `chapter-NNN`; for standalone scenes use `standalone/scene-NNN`. No separate numbered work folder per chapter.
 
